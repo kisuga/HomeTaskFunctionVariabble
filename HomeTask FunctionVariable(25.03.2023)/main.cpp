@@ -20,4 +20,7 @@ int Sum(int n, ...)
 		sum += *pn++;
 	}
 	return sum;
+	
+	
+
 }
