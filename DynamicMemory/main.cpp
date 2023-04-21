@@ -4,7 +4,11 @@ using namespace std;
 void FillRand(int arr[], const int n);
 void Print(int arr[], const int n);
 
-int* pushBack(int arr[],  int& n, int value);
+int* pushBack(int arr[], int& n, int value);
+int* pushFront(int arr[], int& n, int value);
+int* popBack(int arr[], int& n);
+int* popFront(int arr[], int& n);
+//int* insert(int arr[]), int& n);
 
 void main()
 {
@@ -20,9 +24,13 @@ void main()
 	cout << "¬ведите значение с клавиатуры:"; cin >> value;
 
 	arr = pushBack(arr, n, value);
-		
 	Print(arr, n);
-
+	arr = pushFront(arr, n, value);
+	Print(arr, n);
+	arr = popBack(arr, n);
+	Print(arr, n);
+	arr = popFront(arr, n);
+	Print(arr, n);
 	delete[] arr;
 }
 
@@ -44,7 +52,7 @@ void Print(int arr[], const int n)
 	cout << endl;
 }
 
-int* pushBack(int arr[],  int& n, int value)
+int* pushBack(int arr[], int& n, int value)
 
 {
 	int* buffer = new int[n + 1];
@@ -64,3 +72,43 @@ int* pushBack(int arr[],  int& n, int value)
 	return arr;
 
 }
+int* pushFront(int arr[], int& n, int value)
+{
+	int* buffer = new int[n + 1];
+	for (int i = 0; i < n; i++)
+	{
+		buffer[i + 1] = arr[i];
+	}
+	delete[]arr;
+	arr = buffer;
+	arr[0] = value;
+	n++;
+	return buffer;
+}
+int* popBack(int arr[], int& n)
+{
+	int* buffer = new int[--n];
+	for (int i = 0; i < n; i++)buffer[i] = arr[i];
+	delete[] arr;
+
+	return buffer;
+}
+
+int* popFront(int arr[], int& n)
+{
+	int* buffer = new int[--n];
+	for (int i = 0; i < n; i++) buffer[i] = arr[i + 1];
+	delete[] arr;
+
+	return buffer;
+}
+
+//int* insert(int arr[]), int& n)
+//{
+	
+	//int* buffer = new int[n + 1];
+	//for (int i = 0; i < 0;i++)
+	//{
+
+	//}
+//}
